@@ -2,16 +2,16 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    if params[:tags] && params[:location]
+    if params[:location] && params[:tags].empty?
+      puts "#############In Post[location]#############"
+      @posts = Post.tagged_with(params[:location], :on => :location, :any => true)
+    elsif params[:tags] && params[:location].empty?
+      puts "#############In Post[tags]#############"
+      @posts = Post.tagged_with(params[:tags], :on => :tags, :any => true)
+    elsif params[:tags] && params[:location]
       puts "#############In Post.[location & tag]#############"
       @posts = Post.tagged_with(params[:location], :on => :location, :any => true).
         tagged_with(params[:tags], :on => :tags, :any => true)
-    elsif params[:location]
-      puts "#############In Post[location]#############"
-      @posts = Post.tagged_with(params[:location], :on => :location, :any => true)
-    elsif params[:tags]
-      puts "#############In Post[tags]#############"
-      @posts = Post.tagged_with(params[:tags], :on => :tags, :any => true)
     else
       puts "#############In Post.all#############"
       @posts = Post.all

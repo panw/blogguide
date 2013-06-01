@@ -1,5 +1,9 @@
 <h1>Listing posts</h1>
-<input type="text" name="location_field" id="location_field"/><input type="text" name="tag_field" id="tag_field"/><div id="search_button" class="button">Search</div>
+<form name="input" action="/posts" method="get" id="search_form"> 
+  <input type="text" name="location"/>
+  <input type="text" name="tags"/>
+  <input type="submit" value="Search"/>
+</form>
 <table>
   <tr>
     <th>Content</th>
