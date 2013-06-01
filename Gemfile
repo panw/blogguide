@@ -21,8 +21,10 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'masonry-rails'
 gem 'acts-as-taggable-on'
 gem 'forgery'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

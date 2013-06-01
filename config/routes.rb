@@ -1,4 +1,5 @@
 Bloggerguide::Application.routes.draw do
+  get '/tags', :to => 'tags#index'
   resources :posts
   root :to => 'posts#index'
 
