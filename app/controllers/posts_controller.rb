@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    #raise params.to_yaml
     if !params[:tags].blank?
       @posts = Post.tagged_with(params[:tags])
     else

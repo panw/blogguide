@@ -1,30 +1,18 @@
 <h1>Listing posts</h1>
-<form name="input" action="/posts" method="get" id="search_form"> 
-  <input type="text" name="tags"/>
-  <input type="submit" value="Search"/>
-</form>
-<table>
-  <tr>
-    <th>Content</th>
-    <th>Location</th>
-    <th>Tags</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.content %></td>
-    <td><%= post.location.first %></td>
-    <td><%= post.tags.join(',') %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
 
 <%= link_to 'New Post', new_post_path %>
+
+<form name="input" action="/posts" method="get" id="search_form"> 
+  <input type="text" name="tags" class="tag_field"/>
+  <input type="submit" value="Search"/>
+</form>
+<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
+  <% @posts.each do |post| %>
+  <div class="box col4">
+    <p><%= markdown(post.content) %></p>
+    <p><b>Location:</b> <%= location_link(post.location.first) %></p>
+    <p><b>Tags:</b> <%= tag_link(post.tags) %></p>
+  </div>
+  <% end %>
+</div>
+

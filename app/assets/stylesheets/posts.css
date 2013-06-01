@@ -1,0 +1,23 @@
+#masonry-container {
+  background: #FFF;
+  padding: 5px;
+  clear: both;
+}
+
+.box { 
+  padding: 0px 10px 5px 10px;
+  background:#f8f8f8;
+  border:1px solid #ddd;
+  margin: 5px;
+  box-shadow: 2px 2px 2px #dfdfdf;
+}
+
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+.col1 { width: 80px; }
+.col2 { width: 180px; }
+.col3 { width: 350px; }
+.col4 { width: 380px; }
+.col5 { width: 480px; }

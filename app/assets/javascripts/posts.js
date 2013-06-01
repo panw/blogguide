@@ -1,4 +1,10 @@
 $(function() {
+  
+  $('#masonry-container').masonry({
+    itemSelector: '.box',
+  });
+  
+  // Location Autocomplete
   $( ".location_field" ).autocomplete({
     source: function( request, response ) {
       $.ajax({
