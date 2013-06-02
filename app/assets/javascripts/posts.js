@@ -1,5 +1,6 @@
 $(function() {
-  
+  $(".button").button();
+  $(".dialog").hide();
   $('#masonry-container').masonry({
     itemSelector: '.box',
   });
@@ -66,41 +67,22 @@ $(function() {
     }
   }); // end of Tag autocomplete
   
-  $("#add_place_button").click(function(){
-    $("#add_place_dialog").dialog({
+  $("#new_post_button").click(function(){
+    $("#new_post_dialog").dialog({
       height: 500,
-			width: 450,
+			width: 700,
+      resizable: false,
 			modal: true,
-      title: 'Add Place',
+      title: 'New Post',
       buttons: {
         Add: function(event) {
-         var $form = $("#add_place_form"),
-             name = $form.find('input[name="name"]').val(),
-             description = $form.find('textarea[name="description"]').val(),
-             tag_list = $form.find('input[name="tag_list"]').val();
-          console.log("name: " + name);
-          console.log("desc: " + description);
-          console.log("tag_list: " + tag_list);
-          
-          /* Send the data using post */
-          var posting = $.post( '/places', { place: { name: name, description: description, tag_list: tag_list } });
-          console.log(posting);
-          /* Put the results in a div */
-          posting.done(function( data ) {
-            console.log("Posting Done");
-            console.log(data);
-            var tags = tag_list.split(",");
-            var tag_string = "";
-            for(i in tags){
-              tag_string = tag_string + '<a href="/tags/'+tags[i]+'">'+tags[i]+'</a>';
-              if((i+1)<tags.length){
-                tag_string = tag_string + ', ';
-              }
-            }
-            console.log(tag_string);
-            $('#masonry-container').append('<div class="box col3"><p><a href="places/'+data.id+'">'+data.name+'</a></p><p>'+data.description+'</p><p>Tags:'+tag_string+'</p></div>');
-          });
-          $(this).dialog( "close" );
+         var $form = $("#new_post_form"),
+             content = $form.find('textarea[name="content"]').val(),
+             loc = $form.find('input[name="location_list"]').val(),
+             tags = $form.find('input[name="tag_list"]').val();
+         var posting = $.post( '/posts', { post: { content: content, location_list: loc, tag_list: tags } });
+         //reload page on completion
+         window.location = document.URL;
         },
         Cancel: function(){
           $(this).dialog( "close" );

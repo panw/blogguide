@@ -25,6 +25,7 @@ gem 'masonry-rails'
 gem 'acts-as-taggable-on'
 gem 'redcarpet'
 gem 'forgery'
+gem 'jquery-ui-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

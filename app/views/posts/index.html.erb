@@ -1,6 +1,6 @@
 <h1>Listing posts</h1>
 
-<%= link_to 'New Post', new_post_path %>
+<div id="new_post_button" class="button"> New Post </div>
 
 <form name="input" action="/posts" method="get" id="search_form"> 
   <input type="text" name="tags" class="tag_field"/>
@@ -16,3 +16,19 @@
   <% end %>
 </div>
 
+<div id="new_post_dialog" class="dialog" title="New Post">
+  <form id="new_post_form">
+    <fieldset>
+      <div>
+        <textarea name="content" rows="10" cols="65"></textarea>
+      </div>
+      <div>
+        <label for="location">Location:</label><br/>
+        <input type="text" name="location_list" class="location_field"/>
+      </div>
+      <div>
+        <label for="tags">Tags (seperated by commas)</label><br/>
+        <input type="text" name="tag_list" class="tag_field" />
+      </div>
+    </fieldset>
+  </form>
