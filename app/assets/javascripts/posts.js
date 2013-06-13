@@ -79,8 +79,10 @@ $(function() {
          var $form = $("#new_post_form"),
              content = $form.find('textarea[name="content"]').val(),
              loc = $form.find('input[name="location_list"]').val(),
-             tags = $form.find('input[name="tag_list"]').val();
-         var posting = $.post( '/posts', { post: { content: content, location_list: loc, tag_list: tags } });
+             tags = $form.find('input[name="tag_list"]').val(),
+             id = $form.find('input[name="user_id"]').val();
+          alert("USER ID: " + id);
+          var posting = $.post( '/posts', { post: { content: content, location_list: loc, tag_list: tags, user_id: id } });
          //reload page on completion
          window.location = document.URL;
         },
