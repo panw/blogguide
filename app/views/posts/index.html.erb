@@ -29,6 +29,7 @@
       <div>
         <label for="tags">Tags (seperated by commas)</label><br/>
         <input type="text" name="tag_list" class="tag_field" />
+        <input type="hidden" name="user_id" value=<%= "#{current_user.id}" %> />
       </div>
     </fieldset>
   </form>
