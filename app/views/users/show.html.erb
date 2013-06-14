@@ -1,0 +1,10 @@
+<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
+  <% @posts.each do |post| %>
+  <div class="box col4">
+    <p><%= markdown(post.content) %></p>
+    <p><b>Location:</b> <%= location_link(post.location.first) %></p>
+    <p><b>Tags:</b> <%= tag_link(post.tags) %></p>
+    <%= link_to 'Edit', edit_post_path(post) %>
+  </div>
+  <% end %>
+</div>

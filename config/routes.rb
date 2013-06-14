@@ -1,12 +1,15 @@
 Bloggerguide::Application.routes.draw do
-  devise_for :users
 
+  devise_for :users
+  match '/users/:id', :to => 'users#show', :as => :user
+  
   get '/tags', :to => 'tags#index'
   resources :posts
   #root :to => 'posts#index'
   devise_scope :user do
     root to: "devise/sessions#new"
   end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
