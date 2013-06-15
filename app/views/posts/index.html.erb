@@ -1,11 +1,18 @@
-<h1>Listing posts</h1>
-
 <div id="new_post_button" class="button"> New Post </div>
 
 <form name="input" action="/posts" method="get" id="search_form"> 
   <input type="text" name="tags" class="tag_field"/>
   <input type="submit" value="Search"/>
 </form>
+
+<div> 
+  <b>Popular locations:</b><%= tag_link(@locations) %>
+</div>
+
+<div> 
+  <b>Trending: </b><%= tag_link(@tags) %>
+</div>
+
 <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
   <% @posts.each do |post| %>
   <div class="box col4">

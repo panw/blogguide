@@ -2,7 +2,11 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    #raise params.to_yaml
+    @locations = Post.tag_counts_on(:location).order('count desc').limit(5)
+    @tags = Post.tag_counts_on(:tags).order('count desc').limit(8)
+    #@tags = ActsAsTaggableOn::Tag.includes(:taggings).
+      #where("taggings.context = 'location' AND ").select("DISTINCS tags.*")
+    #raise @location_tags.to_yaml
     if !params[:tags].blank?
       @posts = Post.tagged_with(params[:tags])
     else
@@ -15,6 +19,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def location
+    
+  end
+  
   # GET /posts/1
   # GET /posts/1.json
   def show
