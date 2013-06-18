@@ -81,10 +81,12 @@ $(function() {
              loc = $form.find('input[name="location_list"]').val(),
              tags = $form.find('input[name="tag_list"]').val(),
              id = $form.find('input[name="user_id"]').val();
-          alert("USER ID: " + id);
           var posting = $.post( '/posts', { post: { content: content, location_list: loc, tag_list: tags, user_id: id } });
          //reload page on completion
-         window.location = document.URL;
+          posting.done(function(){
+            window.location = document.URL;
+          });
+          
         },
         Cancel: function(){
           $(this).dialog( "close" );
