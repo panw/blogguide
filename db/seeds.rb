@@ -7,23 +7,23 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-def rand_tags
-  return [Forgery(:basic).color, Forgery(:currency).description, 
-          Forgery(:personal).language, Forgery(:personal).race].join(', ')
-end
+#def rand_tags
+ # return [Forgery(:basic).color, Forgery(:currency).description, 
+  #        Forgery(:personal).language, Forgery(:personal).race].join(', ')
+#end
 
-def rand_user
-  return Random.rand(1..5)
-end
+#def rand_user
+ # return Random.rand(1..5)
+#end
 
-5.times do
-  @user = User.create(email: Forgery(:email).address, password: "123456")
-  puts @user.to_yaml
-end
+#5.times do
+ # @user = User.create(email: Forgery(:email).address, password: "123456")
+  #puts @user.to_yaml
+#end
 
-10.times do
-  @post = Post.new(user_id: rand_user, content: Forgery(:lorem_ipsum).paragraphs(Random.rand(2..5)), 
-                  location_list: Forgery(:address).city, 
-                  tag_list: rand_tags+ ", #{Forgery(:address).city}")
-  @post.save
-end
+#10.times do
+ # @post = Post.new(user_id: rand_user, content: Forgery(:lorem_ipsum).paragraphs(Random.rand(2..5)), 
+  #                location_list: Forgery(:address).city, 
+   #               tag_list: rand_tags+ ", #{Forgery(:address).city}")
+  #@post.save
+#end
